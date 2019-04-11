@@ -1,0 +1,58 @@
+.dark {
+    background: $color-background-dark;
+    color: $color-primary-dark;
+
+    .settings-wrapper {
+        background: $color-background-dark;
+    }
+
+    main,
+    .chat-text {
+        background: $color-background-dark;
+    }
+
+    .write-animation,
+    .action-secondary,
+    .unread-messages-count,
+    .pop-up,
+    .emoji-mart .emoji-mart-category-label > span,
+    .emoji-mart,
+    .emoji-mart input,
+    .preview-wrapper,
+    .quote-wrapper,
+    .post-toolbar,
+    .post-add,
+    textarea,
+    header,
+    footer,
+    input,
+    button {
+        background: $color-dark-heavy;
+        color: $color-primary-dark;
+    }
+
+    .post-toolbar {
+        opacity: .9;
+    }
+
+    .post-additional,
+    .post-comment-data {
+        color: $color-gray;
+    }
+
+    input,
+    textarea {
+        &:focus {
+            border-color: $color-light-grey;
+        }
+    }
+
+    .emoji-mart .emoji-mart-category .emoji-mart-emoji:hover:before,
+    .emoji-mart-skin-swatches {
+        background: #444444;
+    }
+
+    .quote-wrapper:after {
+        box-shadow: 0 -10px 35px 10px rgba(30,30,30,.8)
+    }
+}

@@ -1,0 +1,106 @@
+/* PopUp component styles */
+.pop-up {
+    background: $color-white;
+    border-radius: $pop-up-border-radius;
+    box-sizing: border-box;
+    left: 50%;
+    max-height: 90%;
+    overflow: auto;
+    max-width: 500px;
+    min-width: 200px;
+    padding: 35px 15px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    z-index: 15;
+
+    &-overlay {
+        background: $overlay-background-color;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 10;
+    }
+
+    .nick-input {
+        text-align: center;
+    }
+
+    &-close {
+        position: absolute;
+        display: block;
+        right: 7px;
+        top: 7px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        @add-mixin close-button;
+
+        &:hover:before {
+            color: $color-red;
+        }
+    }
+
+    &-loader {
+        margin: auto;
+    }
+
+    &-title {
+        font-size: 18px;
+    }
+
+    &-text {
+        margin: 15px 0;
+    }
+
+    &-additional {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+        min-height: 85px;
+        width: 100%;
+        border-radius: $pop-up-border-radius;
+        overflow: hidden;
+
+        @media (--sm-min) {
+            min-height: 100px;
+        }
+
+        input {
+            display: block;
+            margin: auto;
+        }
+
+        &.invalid {
+            input {
+                border-color: $color-red;
+            }
+        }
+    }
+
+    &-actions {
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+        max-width: 300px;
+    }
+
+    .error {
+        margin: 10px auto 0;
+    }
+
+    .ok-button {
+        margin: auto;
+    }
+}
+
+.button.authorise {
+    max-width: 50%;
+    display: block;
+}

@@ -1,0 +1,159 @@
+/*
+  Media
+*/
+
+/*Mobile*/
+@custom-media --sm-max (max-width: $sm);
+/*Tablet*/
+@custom-media --sm-min (min-width: $sm);
+@custom-media --md-max (max-width: $md);
+/*Desktop*/
+@custom-media --md-min (min-width: $md);
+@custom-media --lg-max (max-width: $lg);
+@custom-media --lg-min (min-width: $lg);
+
+/*
+  Buttons
+*/
+@define-mixin action-button {
+    border-radius: $button-border-radius;
+    cursor: pointer;
+    display: inline-block;
+    height: $button-height;
+    text-align: center;
+    width: $button-width;
+
+    input {
+        visibility: hidden;
+    }
+
+    &:before {
+        color: $color-gray;
+        content: '';
+        width: 100%;
+        height: 100%;
+        font-size: 20px;
+        line-height: 36px;
+        left: 0;
+        top: 0;
+        display: block;
+        font-family: $font-family-FA-light;
+        position: absolute;
+    }
+}
+
+@define-mixin action-secondary {
+    position: relative;
+    background: #EFEFEF;
+    cursor: pointer;
+    width: $action-secondary-width;
+    height: $action-secondary-height;
+    border-radius: $button-border-radius;
+    margin-top: $padding-sm-base;
+    opacity: .7;
+
+    &:first-of-type {
+        margin-top: 0;
+    }
+
+    &:before {
+        content: '';
+        color: gray;
+        display: block;
+        font-family: $font-family-FA-light;
+        font-size: 20px;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        text-align: center;
+        line-height: $action-secondary-height;
+    }
+
+    &.active {
+        opacity: 1;
+    }
+}
+
+@define-mixin button {
+    display: inline-block;
+    width: 150px;
+
+    &:not([disabled]):hover {
+        color: $color-white;
+        border-color: $color-white;
+        cursor: pointer;
+    }
+
+    &-accept,
+    &.ok-button:not([disabled]) {
+        &:hover {
+            background: $color-green;
+            border-color: $color-light-green;
+        }
+    }
+
+    &-reject:hover {
+        background: $color-red;
+        border-color: $color-red;
+    }
+}
+
+@define-mixin clearfix {
+    &:after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+}
+
+@define-mixin transform-door-effect {
+    transform: perspective(1000px) rotateY(70deg);
+}
+
+@define-mixin nav-arrow-link {
+    text-decoration: none;
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    top: 50%;
+    cursor: pointer;
+    transform: translateY(-50%);
+
+    &.next {
+        right: 20px;
+    }
+
+    &:before {
+        opacity: .8;
+        font-family: $font-family-FA-solid;
+        content: $fa-arrow-right;
+        color: $color-gray;
+        display: block;
+        font-size: 30px;
+        line-height: 35px;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+@define-mixin close-button {
+    &:before {
+        position: absolute;
+        display: block;
+        left: 0;
+        content: $fa-x;
+        color: $color-gray;
+        height: 100%;
+        font-size: 20px;
+        width: 100%;
+        line-height: 32px;
+        text-align: center;
+        font-family: $font-family-FA-light;
+    }
+}

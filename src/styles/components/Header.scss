@@ -1,0 +1,129 @@
+/* Header component styles */
+header {
+    height: $header-sm-height;
+}
+
+.logo {
+    color: inherit;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+/*Styles of action buttons*/
+.action {
+    position: relative;
+    @add-mixin action-button;
+
+    &.chat-switch:before {
+        content: $fa-arrows;
+    }
+
+    &.now-online {
+        padding-top: 15px;
+        top: -5px;
+        box-sizing: border-box;
+        font-size: 12px;
+
+        &:before {
+            font-size: 14px;
+            line-height: 24px;
+            content: $fa-users;
+            height: 20px;
+        }
+    }
+
+    &.theme-switch {
+        &:before {
+            content: $fa-sun;
+        }
+
+        &.dark:before {
+            content: $fa-moon;
+        }
+    }
+
+    &.notifications-switch {
+        &:before {
+            content: $fa-ring;
+        }
+
+        &.active:before {
+            content: $fa-ring-slash
+        }
+    }
+
+    &.menu-burger {
+        &:before {
+            content: $fa-burger;
+        }
+
+        &.active:before {
+            content: $fa-x;
+        }
+
+        @media (--sm-max) {
+            margin-right: 0;
+        }
+    }
+}
+
+.settings {
+    &:before {
+        content: $fa-settings;
+    }
+
+    &.active {
+        box-shadow: 0 0 5px 0 rgba(0,0,0,.2);
+
+        .settings-wrapper {
+            padding-top: 7px;
+            transition: max-height .5s, padding-top .1s;
+            max-height: 80px;
+        }
+    }
+}
+
+.logout {
+    &:before {
+        content: $fa-sign-out;
+    }
+}
+
+.login {
+    &:before {
+        content: $fa-sign-in;
+    }
+}
+
+.settings-wrapper {
+    padding-top: 0;
+    position: absolute;
+    left: 0;
+    width: $button-width;
+    top: 30px;
+    max-height: 0;
+    z-index: 2;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,.2);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background: $color-white;
+    overflow: hidden;
+    transition: max-height .5s, padding-top .1s;
+
+    .action {
+        margin-right: 0;
+    }
+}
+
+.new-qty {
+    font-size: 10px;
+    left: 5px;
+    position: absolute;
+    text-shadow: 0 0 10px #969696;
+    top: -5px;
+}
+
+header .action {
+    margin-right: $padding-md-base;
+}

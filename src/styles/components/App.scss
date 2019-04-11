@@ -1,0 +1,249 @@
+/* App component styles */
+@import "../scrollBar.scss";
+@import 'ContactUs.scss';
+@import 'PopUp.scss';
+@import 'Forum.scss';
+@import 'Loader.scss';
+@import 'Login.scss';
+@import 'CookiesBanner.scss';
+@import 'Header.scss';
+@import 'Footer.scss';
+@import 'DarkTheme.scss';
+@import 'Home.scss';
+@import 'Nav.scss';
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+h1 {
+    font-size: 21px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+body {
+    font-family: $font-family-name-base;
+    font-size: $font-size-sm;
+    line-height: $line-height-base;
+
+    @media (--sm-min) {
+        font-size: $font-size-md;
+    }
+
+
+    @media (--lg-min) {
+        font-size: $font-size-lg;
+    }
+}
+
+aside {
+    background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+    position: absolute;
+    background-size: 400% 400%;
+    animation: Gradient 15s ease infinite;
+    left: 0;
+    width: calc(100% - #{$nav-sm-width});
+    height: 100%;
+
+    @media (--sm-min) {
+        width: calc(100% - #{$nav-md-width});
+    }
+}
+
+@keyframes Gradient {
+    0% {
+        background-position: 0 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0 50%
+    }
+}
+
+header,
+footer {
+    box-sizing: border-box;
+    padding: $padding-sm-base;
+    display: flex;
+    justify-content: space-between;
+}
+
+input[type='checkbox'] {
+    display: none;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    margin: 15px auto 0;
+
+    &:before {
+        display: inline-block;
+        content: '';
+        height: 20px;
+        width: 20px;
+        font-family: $font-family-FA-light;
+        border: $chat-border;
+        margin-right: 15px;
+        font-size: 24px;
+    }
+
+    &.active:before {
+        content: $fa-check;
+        color: $color-green;
+    }
+}
+
+label {
+    cursor: pointer;
+}
+
+input {
+    outline: none;
+    border: $chat-border;
+    border-radius: $pop-up-border-radius;
+    box-sizing: border-box;
+    box-shadow: none;
+
+    &[type='text'] {
+        min-width: 240px;
+        padding: 0 10px;
+        height: $button-height;
+    }
+
+    &[type='checkbox'] {
+
+    }
+}
+
+header {
+    border-bottom: $chat-border;
+}
+
+header,
+footer {
+    position: relative;
+    background: $color-white;
+    z-index: 2;
+}
+
+input,
+textarea {
+    outline: none;
+    box-shadow: none;
+    box-sizing: border-box;
+    border: $chat-border;
+    border-radius: $chat-border-radius;
+    padding: $padding-md-base;
+
+    &:focus {
+        border-color: $color-dark-grey;
+    }
+}
+
+.title {
+    margin-bottom: 5px;
+}
+
+.error {
+    font-size: 12px;
+    font-style: italic;
+    color: $color-red;
+    margin-top: 10px;
+}
+
+.page-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.page-content {
+    overflow: auto;
+    box-sizing: border-box;
+    height: 100%;
+
+    .page-title {
+        font-size: 24px;
+        margin: 25px auto;
+    }
+
+    h3 {
+        margin: 25px auto;
+    }
+
+    h4 {
+        margin: 15px auto;
+    }
+}
+
+.page-main-wrapper {
+    position: relative;
+    height: $main-sm-height;
+    z-index: 1;
+}
+
+main {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+    text-align: center;
+    background: $color-white;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transform-origin: left center;
+    transition: transform .3s, margin-right .3s .1s;
+
+    @media (--sm-min) {
+        transform-origin: right center;
+    }
+
+    &.nav-active {
+        box-shadow: -15px 0 30px 1px rgba(0,0,0,0.1);
+        @add-mixin transform-door-effect;
+        transition: transform .3s .1s, margin-right .3s;
+
+        &:after {
+            content: '';
+            display: block;
+            height: 100%;
+            width: 20px;
+            transition: box-shadow .3s .1s;
+            position: absolute;
+            right: 0;
+            top: 0;
+            box-shadow: inset -7px 0px 14px 0px rgba(179,179,179,0.2);
+        }
+
+        @media (--sm-min) {
+            margin-right: $nav-md-width;
+            transform: perspective(1000px) rotateY(-35deg);
+        }
+    }
+}
+
+.button {
+    @add-mixin button;
+    border-radius: $pop-up-border-radius;
+    height: $button-height;
+    background: $color-white;
+    border: $chat-border;
+    outline: none;
+    max-width: 45%;
+    text-transform: uppercase;
+}
