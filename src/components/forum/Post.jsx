@@ -75,7 +75,7 @@ class Post extends Component {
             return this.props.showPopUp('LOGIN')
         }
 
-        const postId = this.props.match.params.post_id;
+        const postId = parseInt(this.props.match.params.post_id, 10);
 
         let prevLikedList = this.props.likedPosts,
             newLikedPostsList = {...prevLikedList},
@@ -85,7 +85,7 @@ class Post extends Component {
             currentPostIndex = 0;
 
         postsData.forEach((post, index) => {
-            if (post.id === postId) {
+            if (post.postId === postId) {
                 currentPostIndex = index
             }
         });
@@ -101,13 +101,8 @@ class Post extends Component {
         }
 
         axios.post(serverApiPath + '/api/likePost', {userId, isLike, postId})
-            .then((likesQty) => {
-                postsData && postsData.forEach((post, index) => {
-                    if (post.postId === postId) {
-                        postsData[index].likesQty = likesQty;
-                        this.props.setPosts(postsData)
-                    }
-                });
+            .then(() => {
+                this.props.setPosts({data: postsData, location: this.props.loc})
             });
 
         this.props.likeDislikePost(newLikedPostsList);

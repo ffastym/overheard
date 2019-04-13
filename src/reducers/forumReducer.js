@@ -3,10 +3,8 @@
  */
 const initialState = {
     cities: null,
-    postsData: {
-        ternopil: null,
-        lviv: null
-    }
+    activeLocation: null,
+    postsData: {}
 };
 
 const forumReducer = (state = initialState, action) => {
@@ -15,6 +13,12 @@ const forumReducer = (state = initialState, action) => {
             state = {
                 ...state,
                 cities: action.payload
+            };
+            break;
+        case 'SET_ACTIVE_LOCATION':
+            state = {
+                ...state,
+                activeLocation: action.payload
             };
             break;
         case 'SET_POSTS':

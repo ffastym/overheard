@@ -17,6 +17,20 @@ const forumActions = {
     },
 
     /**
+     * Set active location
+     *
+     * @param location
+     *
+     * @returns {{payload: *, type: string}}
+     */
+    setActiveLocation: (location) => {
+        return {
+            type: 'SET_ACTIVE_LOCATION',
+            payload: location
+        }
+    },
+
+    /**
      * Set posts
      *
      * @param data

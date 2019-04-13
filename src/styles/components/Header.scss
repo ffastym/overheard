@@ -10,6 +10,19 @@ header {
     align-items: center;
 }
 
+.logo-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.logo-location {
+    position: absolute;
+    bottom: -1px;
+    font-size: 12px;
+    font-style: italic;
+    left: 65px;
+}
+
 /*Styles of action buttons*/
 .action {
     position: relative;
@@ -35,11 +48,11 @@ header {
 
     &.theme-switch {
         &:before {
-            content: $fa-sun;
+            content: $fa-moon;
         }
 
         &.dark:before {
-            content: $fa-moon;
+            content: $fa-sun;
         }
     }
 

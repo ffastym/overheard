@@ -39,7 +39,8 @@ const Header = (props) => {
     return (
         <header>
             <NavLink exact={true} to='/' className='logo'>
-                <h1>Підслухано</h1>
+                <span className='logo-text'>Підслухано</span>
+                <span className="logo-location">{props.activeLocation}</span>
             </NavLink>
             <div className='actions'>
                 <span className='action settings' onClick={toggleSettings}>
@@ -75,6 +76,7 @@ const mapStateToProps = (state) => {
         isMobile               : state.app.isMobile,
         isNotificationsEnabled : state.app.isNotificationsEnabled,
         theme                  : state.app.theme,
+        activeLocation         : state.forum.activeLocation,
         login                  : state.user.login
     }
 };

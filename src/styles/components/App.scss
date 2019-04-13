@@ -77,12 +77,25 @@ header,
 footer {
     box-sizing: border-box;
     padding: $padding-sm-base;
+    box-shadow: 0 0 7px 0 rgba(0,0,0,0.1);
     display: flex;
     justify-content: space-between;
+    position: relative;
+    background: $color-white;
+    z-index: 2;
 }
 
 input[type='checkbox'] {
     display: none;
+}
+
+.no-data {
+    padding: $padding-sm-base;
+    min-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 .checkbox-label {
@@ -127,17 +140,6 @@ input {
     &[type='checkbox'] {
 
     }
-}
-
-header {
-    border-bottom: $chat-border;
-}
-
-header,
-footer {
-    position: relative;
-    background: $color-white;
-    z-index: 2;
 }
 
 input,

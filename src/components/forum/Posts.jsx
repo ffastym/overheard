@@ -23,7 +23,8 @@ class Posts extends Component {
         this.state = {
             posts: [],
             lastPostIndex: -1,
-            hasMore: true
+            hasMore: true,
+            collageLinks: null
         };
 
         props.cities.forEach(city => {
@@ -45,6 +46,10 @@ class Posts extends Component {
 
     scrollList = (e) => {
         const listWrapper = e.target;
+
+        this.setState({
+            displayToTop: listWrapper.scrollTop > 100
+        });
 
         if (listWrapper.scrollHeight <= Math.ceil(listWrapper.scrollTop + listWrapper.clientHeight + 1) && this.state.hasMore) {
             this.loadPosts()
@@ -94,33 +99,35 @@ class Posts extends Component {
      * Render Posts component
      */
     render() {
+        const posts = this.state.posts;
+
         return (
-            <React.Fragment>
-                <div className="universities-list">
-                    <p className='title'>Підслухано в навчальних закладах:</p>
-                    {this.state.collageLinks}
+            <div className='posts-list-wrapper'
+                 onScroll={this.scrollList}
+                 ref={node => this.listWrapperRef = node}>
+                    {this.state.collageLinks
+                        && <div className="universities-list">
+                            <p className='title'>Підслухано в навчальних закладах:</p>
+                            {this.state.collageLinks}
+                        </div>}
+                <div className='posts-list'>
+                    {this.state.displayToTop
+                    && <span className='posts-button to-top'
+                             onClick={() => this.listWrapperRef.scrollTo(0,0)}>
+                    </span>}
+                    <Link className='posts-button post-add' to={'/' + this.props.loc + '/new_post'}/>
+                    {posts}
+                    {this.state.hasMore && <Loader/>}
                 </div>
-                <div className='posts-list'
-                     ref={node => this.listRef = node}
-                     onScroll={this.scrollList}>
-                    <Link className='post-add' to={'/' + this.props.loc + '/new_post'}/>
-                    {this.state.posts}
-                    {this.state.hasMore
-                        ? <Loader/>
-                        : <button className='button ok-button'
-                                  onClick={() => this.listRef.scrollTo(0,0)}>
-                            На початок
-                    </button>}
-                </div>
-            </React.Fragment>
+            </div>
         )
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        login: state.user.login,
-        cities: state.forum.cities
+        login  : state.user.login,
+        cities : state.forum.cities
     }
 };
 

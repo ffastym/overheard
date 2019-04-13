@@ -91,8 +91,10 @@ class App extends Component {
         }, null);
     };
 
-    getForumRoute = (key) => {
-        return <Route key={key} path={"/" + key} render={() => (<Forum loc={key} ssr={this.props.ssr}/>)}/>
+    getForumRoute = (key, name) => {
+        return <Route key={key}
+                      path={"/" + key}
+                      render={() => (<Forum loc={key} name={name} ssr={this.props.ssr}/>)}/>
     };
 
     /**
@@ -116,13 +118,13 @@ class App extends Component {
                      collages = [...collages, ...city.universities]
                 }
 
-                return this.getForumRoute(city.key)
+                return this.getForumRoute(city.key, city.name)
             });
 
             if (collages.length) {
                 routes = [
                     ...routes,
-                    collages.map(collage => {return this.getForumRoute(collage.key)})
+                    collages.map(collage => {return this.getForumRoute(collage.key, collage.name)})
                 ]
             }
 

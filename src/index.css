@@ -258,6 +258,10 @@ table{
         border-radius:10px;
         text-decoration:none;
     }
+.posts-list-wrapper{
+    height:100%;
+    overflow-y:auto;
+}
 .posts-list{
     max-width:500px;
     margin:auto;
@@ -285,6 +289,40 @@ table{
         background-color:#808080;
         position:absolute;
         bottom:-15px;
+    }
+.posts-button{
+    text-decoration:none;
+    display:block;
+    width:40px;
+    height:40px;
+    position:fixed;
+    bottom:65px;
+    background:#EFEFEF;
+    box-shadow:0 0 5px 0 rgba(0,0,0,0.5);
+    opacity:.8;
+    border-radius:50%;
+    z-index:2
+}
+.posts-button:before{
+        content:'';
+        height:inherit;
+        width:inherit;
+        line-height:40px;
+        font-size:25px;
+        color:#808080;
+        font-family:Font Awesome;
+    }
+.to-top{
+    left:20px
+}
+.to-top:before{
+        content:'\f341';
+    }
+.post-add{
+    right:20px
+}
+.post-add:before{
+        content:'\f067';
     }
 .post{
     display:block;
@@ -397,7 +435,7 @@ table{
         padding-top:35px;
     }
 .post-view{
-        padding-bottom:60px;
+        padding:5px 5px 60px;
         max-width:600px;
         margin:0 auto;
     }
@@ -437,29 +475,6 @@ table{
             padding-top:15px;
             display:block;
             font-size:18px;
-        }
-.post-add{
-        text-decoration:none;
-        display:block;
-        width:40px;
-        height:40px;
-        position:fixed;
-        bottom:65px;
-        background:#EFEFEF;
-        box-shadow:0 0 5px 0 rgba(0,0,0,0.5);
-        opacity:.8;
-        border-radius:50%;
-        right:20px;
-        z-index:2
-    }
-.post-add:before{
-            content:'\f067';
-            height:inherit;
-            width:inherit;
-            line-height:40px;
-            font-size:25px;
-            color:#808080;
-            font-family:Font Awesome;
         }
 .post-comment{
         padding:10px 0
@@ -655,6 +670,17 @@ header{
     -webkit-align-items:center;
             align-items:center;
 }
+.logo-text{
+    font-size:18px;
+    font-weight:bold;
+}
+.logo-location{
+    position:absolute;
+    bottom:-1px;
+    font-size:12px;
+    font-style:italic;
+    left:65px;
+}
 .action{
     position:relative;
     border-radius:5px;
@@ -696,10 +722,10 @@ header{
             height:20px;
         }
 .action.theme-switch:before{
-            content:'\f185';
+            content:'\f186';
         }
 .action.theme-switch.dark:before{
-            content:'\f186';
+            content:'\f185';
         }
 .action.notifications-switch:before{
             content:'\f0f3';
@@ -759,7 +785,6 @@ header .action{
     margin-right:10px;
 }
 footer{
-    border-top:1px solid #808080;
     height:45px;
     -webkit-align-items:center;
             align-items:center;
@@ -842,7 +867,7 @@ footer{
 .dark main, .dark .chat-text{
         background:#2F2F2F;
     }
-.dark .write-animation, .dark .action-secondary, .dark .unread-messages-count, .dark .pop-up, .dark .emoji-mart .emoji-mart-category-label > span, .dark .emoji-mart, .dark .emoji-mart input, .dark .preview-wrapper, .dark .quote-wrapper, .dark .post-toolbar, .dark .post-add, .dark textarea, .dark header, .dark footer, .dark input, .dark button{
+.dark .write-animation, .dark .action-secondary, .dark .unread-messages-count, .dark .pop-up, .dark .emoji-mart .emoji-mart-category-label > span, .dark .emoji-mart, .dark .emoji-mart input, .dark .preview-wrapper, .dark .quote-wrapper, .dark .post-toolbar, .dark .posts-button, .dark .location-link, .dark textarea, .dark header, .dark footer, .dark input, .dark button{
         background:#2A2A2A;
         color:#E3E3E3;
     }
@@ -995,13 +1020,29 @@ aside{
 header, footer{
     box-sizing:border-box;
     padding:5px;
+    box-shadow:0 0 7px 0 rgba(0,0,0,0.1);
     display:-webkit-flex;
     display:flex;
     -webkit-justify-content:space-between;
             justify-content:space-between;
+    position:relative;
+    background:#FFFFFF;
+    z-index:2;
 }
 input[type='checkbox']{
     display:none;
+}
+.no-data{
+    padding:5px;
+    min-height:100%;
+    display:-webkit-flex;
+    display:flex;
+    -webkit-flex-wrap:wrap;
+            flex-wrap:wrap;
+    -webkit-align-items:center;
+            align-items:center;
+    -webkit-justify-content:center;
+            justify-content:center;
 }
 .checkbox-label{
     display:-webkit-flex;
@@ -1042,14 +1083,6 @@ input[type='text']{
 input[type='checkbox']{
 
     }
-header{
-    border-bottom:1px solid #808080;
-}
-header, footer{
-    position:relative;
-    background:#FFFFFF;
-    z-index:2;
-}
 input, textarea{
     outline:none;
     box-shadow:none;
